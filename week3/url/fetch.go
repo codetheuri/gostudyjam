@@ -16,12 +16,12 @@ func main() {
 	fmt.Fprintf(os.Stderr, "Adding 'http://' to URL: %s\n", url)
 	}
 		resp, err := http.Get(url)
-		// status := resp.StatusCode
+		
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "fetch: %v\n", err)
 			os.Exit(1)
 		}
-    //    fmt.Printf("Status code: %d\n", status)
+       fmt.Printf("Status code: %d\n", resp.StatusCode)
 	   fmt.Printf("HTTp Status: %s\n", resp.Status)
 		// The http.Get response body is an io.ReadCloser. We need to read it all.
 		// b, err := io.ReadAll(resp.Body) // <--- CHANGE: Use io.ReadAll instead of ioutil.ReadAll
