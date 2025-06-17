@@ -18,7 +18,12 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
+func InitDB(s string) {
+	panic("unimplemented")
+}
+
 func itemsHandler(w http.ResponseWriter, r *http.Request) {
+
 	switch r.Method {
 	case http.MethodGet:
 		items, err := GetAllItems()
@@ -40,10 +45,24 @@ func itemsHandler(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("Failed to insert item"))
 			return
 		}
-		it.ID = int(id)
+		intID, ok := id.(int)
+		if !ok {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte("Failed to convert id to int"))
+			return
+		}
+		it.ID = intID
 		w.WriteHeader(http.StatusCreated)
 		json.NewEncoder(w).Encode(it)
 	default:
 		w.WriteHeader(http.StatusMethodNotAllowed)
 	}
+}
+
+func InsertItem(s string) (any, any) {
+	panic("unimplemented")
+}
+
+func GetAllItems() (any, any) {
+	panic("unimplemented")
 }

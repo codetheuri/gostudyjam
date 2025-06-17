@@ -2,9 +2,9 @@ package main
 
 import "fmt"
 
-var jwtToken = 100 // private variable
+var jwtToken int = 100 // private variable
 // public variable
-const JwtToken2 string = "effrfrwf" // public variable
+const JwtToken string = "effrfrwf" // public variable
 
 func main() {
 	var username string = "Gopher"
@@ -33,6 +33,10 @@ func main() {
 	//no var style
 	numberOfUser := 100
 	fmt.Println(numberOfUser) // 100
-
-	fmt.Println("jwtToken is ", JwtToken2)
+     name := [2] string{}
+	name[1]= "Gopher"
+	o:= name[:1]
+	fmt.Println(o) // [Gopher Gopher]
+	fmt.Println(name) // Gopher
+	fmt.Println("jwtToken is ", JwtToken)
 }
